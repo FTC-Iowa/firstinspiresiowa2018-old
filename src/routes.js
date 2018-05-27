@@ -10,6 +10,7 @@ import BlogPage from './components/blog/BlogPage.vue'
 
 import EventPage from './components/event/EventPage.vue'
 import EventHome from './components/event/EventHome.vue'
+import EventMatches from './components/event/EventMatches.vue'
 
 const routes = [
     { path: '/', component: HomePage },
@@ -22,7 +23,7 @@ const routes = [
             { path: 'home', component: EventHome },
             { path: 'schedule', component: HomePage },
             { path: 'teams', component: HomePage },
-            { path: 'matches', component: HomePage },
+            { path: 'matches', component: EventMatches },
             { path: 'results', component: HomePage },
             { path: 'rankings', component: HomePage },
             { path: 'inspections', component: HomePage },

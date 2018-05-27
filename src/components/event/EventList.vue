@@ -174,8 +174,7 @@ export default {
         this.searched = searchByName(this.users, this.search)
       },
         onSelect (item) {
-        this.selected = item
-            console.log("selected", item);
+            this.selected = item
             this.$router.push('/event/'+item.id+"/home");
         }
     },
