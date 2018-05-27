@@ -1,8 +1,6 @@
 <template>
 
   <div class="page-container md-layout-row">
-
-      
     <md-app>
       <md-app-toolbar class="md-primary">
         <div class="color-strip">
@@ -28,30 +26,31 @@
         </md-toolbar>
 
         <md-list>
-          <md-list-item>
-            <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
-          </md-list-item>
+          <router-link tag="md-list-item" to="/">
+            <md-icon>home</md-icon>
+            <span class="md-list-item-text">Home</span>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>send</md-icon>
-            <span class="md-list-item-text">Sent Mail</span>
-          </md-list-item>
+          <router-link tag="md-list-item" to="/teams">
+            <md-icon>people</md-icon>
+            <span class="md-list-item-text">Teams</span>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
-          </md-list-item>
+          <router-link tag="md-list-item" to="/events">
+            <md-icon>event</md-icon>
+            <span class="md-list-item-text">Events</span>
+          </router-link>
 
-          <md-list-item>
-            <md-icon>error</md-icon>
-            <span class="md-list-item-text">Spam</span>
-          </md-list-item>
+          <router-link tag="md-list-item" to="/blogs">
+            <md-icon>description</md-icon>
+            <span class="md-list-item-text">Blogs</span>
+          </router-link>
+
         </md-list>
       </md-app-drawer>
 
-      <md-app-content>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.
+      <md-app-content id="content-pane">
+        <router-view id="main-view"></router-view>
       </md-app-content>
     </md-app>
   </div>
@@ -60,12 +59,11 @@
 
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
   },
   data: () => ({
     showNavigation: false,
@@ -82,6 +80,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#main-view {
+  height: 100%;
+}
+
+#content-pane {
+  padding: 0px;
+  border: 0px;
 }
 
 .md-app {
