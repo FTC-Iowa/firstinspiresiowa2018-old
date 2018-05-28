@@ -12,6 +12,10 @@ import EventPage from './components/event/EventPage.vue'
 import EventHome from './components/event/EventHome.vue'
 import EventMatches from './components/event/EventMatches.vue'
 
+import TeamPage from './components/team/TeamPage.vue'
+import TeamHome from './components/team/TeamHome.vue'
+import TeamMatches from './components/team/TeamMatches.vue'
+
 const routes = [
     { path: '/', component: HomePage },
     { path: '/teams', component: TeamList },
@@ -30,8 +34,12 @@ const routes = [
             { path: 'awards', component: HomePage },
             { path: 'twitter', component: HomePage },
         ]
-
-
+    },
+    { path: '/team/:id', component: TeamPage,
+        children: [
+            { path: 'home', component: TeamHome },
+            { path: 'matches', component: TeamMatches }
+        ]
     }
   ];
 
