@@ -20,6 +20,9 @@ import LeagueTeams  from './components/league/LeagueTeams.vue'
 import LeagueEvents from './components/league/LeagueEvents.vue'
 import LeagueRankings from './components/league/LeagueRankings.vue'
 
+import TeamPage from './components/team/TeamPage.vue'
+import TeamHome from './components/team/TeamHome.vue'
+import TeamMatches from './components/team/TeamMatches.vue'
 
 const routes = [
     { path: '/', component: HomePage },
@@ -51,6 +54,12 @@ const routes = [
             { path: 'teams', component: LeagueTeams },
             { path: 'events', component: LeagueEvents },
             { path: 'rankings', component: LeagueRankings }
+        ]
+    },
+    { path: '/team/:id', component: TeamPage,
+        children: [
+            { path: 'home', component: TeamHome },
+            { path: 'matches', component: TeamMatches }
         ]
     }
   ];
