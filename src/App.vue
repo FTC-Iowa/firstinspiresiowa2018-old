@@ -3,7 +3,7 @@
   <div class="page-container md-layout-row">
     <md-app>
       <md-app-toolbar class="md-primary">
-        <div class="color-strip">
+        <div class="color-strip md-elevation-5">
           <table cellspacing=0px cellpadding=0px >
             <tr>
               <td style="background-color:#00a651"></td>
@@ -46,6 +46,11 @@
           <router-link tag="md-list-item" to="/events">
             <md-icon>event</md-icon>
             <span class="md-list-item-text">Events</span>
+          </router-link>
+
+          <router-link tag="md-list-item" to="/leagues">
+            <md-icon>rowing</md-icon>
+            <span class="md-list-item-text">Leagues</span>
           </router-link>
 
           <router-link tag="md-list-item" to="/blogs">

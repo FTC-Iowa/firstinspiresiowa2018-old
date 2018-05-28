@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <md-tabs class="md-primary" md-alignment="left" :md-active-tab="'tab-'+$route.path.split('/').pop()">
+        <md-tabs class="md-primary md-elevation-3" md-alignment="left" :md-active-tab="'tab-'+$route.path.split('/').pop()">
             <md-tab id="tab-home" md-label="Home" to="./home"></md-tab>
             <md-tab id="tab-schedule" md-label="Schedule" to="./schedule"></md-tab>
             <md-tab id="tab-teams" md-label="Teams" to="./teams"></md-tab>
@@ -12,7 +12,6 @@
             <md-tab id="tab-twitter" md-label="Twitter" to="twitter"></md-tab>
         </md-tabs>
         <router-view></router-view>
-
     </div>
 </template>
 
