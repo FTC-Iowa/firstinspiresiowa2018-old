@@ -21,6 +21,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.md-tabs-navigation {
+    overflow-x: auto;
+    .md-button {
+        min-width: 100px;
+    }
+}
 
 </style>
