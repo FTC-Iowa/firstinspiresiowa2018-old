@@ -13,10 +13,7 @@ export default {
         }
     },
     mounted () {
-        this.$gun.get('mark').map().on((node, key) => {
-            console.log("node['"+ key +"']=" + node);
-            this[key] = node;
-        })
+        
     }
 
 }

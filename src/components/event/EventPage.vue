@@ -28,22 +28,31 @@
             <!-- </div> -->
         </md-content>
 
-        <p> page width = {{ pageWidth }}, numChildren = {{ numChildren }} </p>
+        <p> page width = {{ pageWidth }}, numChildren = {{ numChildren }}, id= {{eventId}}, name = {{eventData.name}} </p>
 
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+import { db } from '../../main'
+
 export default {
     name: "EventPage",
+    props: ['eventId'],
     data: () => ({
         hasNavigationScroll: false,
         isNavigationOnStart: true,
         isNavigationOnEnd: false,
         pageWidth: 100,
-        numChildren: 5
+        numChildren: 5,
+        eventData: {} // populated from database information
     }),
+    firestore () {
+        return {
+            eventData: db.collection('events').doc(this.eventId)
+        }
+    },
     computed :{
         tabDivClasses() {
             return {
