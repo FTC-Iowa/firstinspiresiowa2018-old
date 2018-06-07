@@ -34,27 +34,27 @@
         </md-toolbar>
 
         <md-list>
-          <router-link tag="md-list-item" to="/">
+          <router-link tag="md-list-item" to="/" @click.native="hideSideBar">
             <md-icon>home</md-icon>
             <span class="md-list-item-text">Home</span>
           </router-link>
 
-          <router-link tag="md-list-item" to="/teams">
+          <router-link tag="md-list-item" to="/teams" @click.native="hideSideBar">
             <md-icon>people</md-icon>
             <span class="md-list-item-text">Teams</span>
           </router-link>
 
-          <router-link tag="md-list-item" to="/events">
+          <router-link tag="md-list-item" to="/events" @click.native="hideSideBar">
             <md-icon>event</md-icon>
             <span class="md-list-item-text">Events</span>
           </router-link>
 
-          <router-link tag="md-list-item" to="/leagues">
+          <router-link tag="md-list-item" to="/leagues" @click.native="hideSideBar">
             <md-icon>rowing</md-icon>
             <span class="md-list-item-text">Leagues</span>
           </router-link>
 
-          <router-link tag="md-list-item" to="/blogs">
+          <router-link tag="md-list-item" to="/blogs" @click.native="hideSideBar">
             <md-icon>description</md-icon>
             <span class="md-list-item-text">Blogs</span>
           </router-link>
@@ -108,6 +108,9 @@ export default {
         // } else {
         //     this.hasNavigationScroll = false;
         // }
+    },
+    hideSideBar() {
+      this.showNavigation = false;
     }
   },
   mounted() {
