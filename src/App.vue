@@ -2,7 +2,7 @@
 
   <div class="page-container md-layout-row">
     <md-app>
-      <md-app-toolbar class="md-primary">
+      <md-app-toolbar class="md-primary" v-on:SearchExpanded="doSearchExpanded">
         <div class="color-strip md-elevation-5">
           <table cellspacing=0px cellpadding=0px >
             <tr>
@@ -17,12 +17,13 @@
         <md-button class="md-icon-button" @click="showNavigation=true">
           <md-icon>menu</md-icon>
         </md-button>
-        <span class="md-title">FIRST Inspires Iowa</span>
+        <span class="md-title" v-show="hideOnExpand === false || searchExpanded === false" ref="title">FIRST Inspires Iowa</span>
 
         <div class="md-toolbar-section-end">
-          <md-button class="md-icon-button">
+          <!-- <md-button class="md-icon-button">
             <md-icon>search</md-icon>
-          </md-button>
+          </md-button> -->
+          <searchButton v-on:SearchExpanded="doSearchExpanded"></searchButton>
         </div>
 
       </md-app-toolbar>
@@ -72,15 +73,53 @@
 
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
-
+import SearchButton from './components/search/SearchButton.vue'
 export default {
   name: 'app',
   components: {
+    SearchButton
   },
   data: () => ({
     showNavigation: false,
-    showSidepanel: false
-  })
+    showSidepanel: false,
+    searchExpanded: false,
+    hideOnExpand: true,
+    pageWidth: 100,
+    titleRightEdge: 100
+  }),
+  methods: {
+    doSearchExpanded(isExpanded) {
+      console.log("Search expanded event:", isExpanded);
+      this.searchExpanded = isExpanded;
+
+    },
+    calculateOnResize() {
+        this.pageWidth = window.innerWidth;
+        if ( this.pageWidth > this.titleRightEdge + 300 ) {
+          this.hideOnExpand = false;
+        } else {
+          this.hideOnExpand = true;
+        }
+        // this.numChildren = this.$refs.tabBar.$children.length - 1;
+        // console.log("width=", this.pageWidth);
+        // console.log("bar", this.numChildren)
+        // if (this.numChildren * 100 > this.pageWidth) {
+        //     this.hasNavigationScroll = true;
+        // } else {
+        //     this.hasNavigationScroll = false;
+        // }
+    }
+  },
+  mounted() {
+      this.$nextTick(() => {
+          this.titleRightEdge = this.$refs.title.offsetLeft + this.$refs.title.offsetWidth;
+          this.calculateOnResize();
+          window.addEventListener('resize', this.calculateOnResize);
+      })
+  },
+  beforeDestroy() {
+      window.removeEventListener('resize', this.calculateOnResize);
+  }
 }
 </script>
 
