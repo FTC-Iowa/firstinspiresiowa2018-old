@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+import SearchPage from './components/search/SearchPage.vue'
+
 import HomePage from './components/HomePage.vue'
 import TeamList from './components/team/TeamList.vue'
 import EventList from './components/event/EventList.vue'
@@ -26,6 +28,7 @@ import TeamMatches from './components/team/TeamMatches.vue'
 
 const routes = [
     { path: '/', component: HomePage },
+    { path: '/search', component: SearchPage },
     { path: '/teams', component: TeamList },
     { path: '/events', component: EventList },
     { path: '/leagues', component: LeagueList },

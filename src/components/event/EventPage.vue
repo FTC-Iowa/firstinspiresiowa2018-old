@@ -17,7 +17,7 @@
                     <md-tab id="tab-rankings" md-label="Rankings" to="rankings"></md-tab>
                     <md-tab id="tab-inspections" md-label="Inspections" to="inspections"></md-tab>
                     <md-tab id="tab-awards" md-label="Awards" to="awards"></md-tab>
-                    <!-- <md-tab id="tab-twitter" md-label="Twitter" to="twitter"></md-tab> -->
+                    <md-tab id="tab-twitter" md-label="Twitter" to="twitter"></md-tab>
                 </md-tabs>
                 </div>
             </div>

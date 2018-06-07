@@ -6,6 +6,17 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 Vue.use(VueMaterial);
 
+// GUN
+// import VueGun from 'vue-gun';
+// import Gun from 'gun';
+// const gunPeers = [
+//   "http://localhost:5000/gun"
+// ];
+// const gun = new Gun(gunPeers);
+// Vue.use(VueGun, {
+//   gun: gun
+// });
+
 // Firebase
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
