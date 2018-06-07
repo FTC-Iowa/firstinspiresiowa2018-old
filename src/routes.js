@@ -23,6 +23,7 @@ import LeagueRankings from './components/league/LeagueRankings.vue'
 import TeamPage from './components/team/TeamPage.vue'
 import TeamHome from './components/team/TeamHome.vue'
 import TeamMatches from './components/team/TeamMatches.vue'
+import TeamAwards from './components/team/TeamAwards.vue'
 
 const routes = [
     { path: '/', component: HomePage },
@@ -59,7 +60,8 @@ const routes = [
     { path: '/team/:id', component: TeamPage,
         children: [
             { path: 'home', component: TeamHome },
-            { path: 'matches', component: TeamMatches }
+            { path: 'matches', component: TeamMatches },
+            { path: 'awards', component: TeamAwards }
         ]
     }
   ];
