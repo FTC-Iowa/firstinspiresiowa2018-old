@@ -27,10 +27,7 @@
                 </md-button>
             <!-- </div> -->
         </md-content>
-
-        <p> page width = {{ pageWidth }}, numChildren = {{ numChildren }}, id= {{eventId}}, name = {{eventData.name}} </p>
-
-        <router-view></router-view>
+        <router-view v-bind:eventData="eventData"></router-view> <!-- Pass the event data to the tab -->
     </div>
 </template>
 
