@@ -100,14 +100,6 @@ export default {
         } else {
           this.hideOnExpand = true;
         }
-        // this.numChildren = this.$refs.tabBar.$children.length - 1;
-        // console.log("width=", this.pageWidth);
-        // console.log("bar", this.numChildren)
-        // if (this.numChildren * 100 > this.pageWidth) {
-        //     this.hasNavigationScroll = true;
-        // } else {
-        //     this.hasNavigationScroll = false;
-        // }
     },
     hideSideBar() {
       this.showNavigation = false;
