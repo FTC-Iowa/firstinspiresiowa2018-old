@@ -35,7 +35,9 @@ const routes = [
     { path: '/leagues', component: LeagueList },
     { path: '/blogs', component: BlogPage },
 
-    { path: '/event/:id', component: EventPage,
+
+    { path: '/event/', redirect: '/events'},
+    { path: '/event/:eventId', redirect: '/event/:eventId/home', component: EventPage, props: true,
         children: [
             { path: 'home', component: EventHome },
             { path: 'schedule', component: HomePage },
@@ -70,5 +72,6 @@ const routes = [
   ];
 
 export default new VueRouter({
+    mode: 'history',
     routes // short for `routes: routes`
 });
