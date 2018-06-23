@@ -14,7 +14,7 @@ export default {
     }),
     firestore() {
         return {
-            team: db.collection("teams").doc(this.number)
+            team: db.collection("teams").doc("" + this.number)
         }
     }
 }
