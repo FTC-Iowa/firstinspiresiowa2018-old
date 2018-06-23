@@ -1,14 +1,6 @@
 <template>
     <div>
         <match-card v-for="match in matches" :match="match" :key="match.name"/>
-        <!-- <match-card />
-        <match-card />
-        <match-card /> -->
-
-        <!-- <article v-for="(location, idx) in locations" :key="idx">
-            <img :src="location.images">
-            <h1>{{ location.name }}</h1>
-        </article> -->
     </div>
 </template>
 

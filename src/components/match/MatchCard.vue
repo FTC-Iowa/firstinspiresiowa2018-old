@@ -3,39 +3,78 @@
         
         <md-card-header>
             <md-card-header-text>
-                <div class="md-title">Match {{match.name}} <team-name number="1111"/></div>
-                <div class="md-subhead">Red {{match.red.score.total}}-{{match.blue.score.total}}</div>
-                <div class="columns">
-                    Red Aliance
-                    
-                    <ul>
-                        <li v-for="team in match.red.teams" :key="team.number">{{team.number}}</li>
-                    </ul>
-                </div>
-                <div class="columns">
-                    Blue Aliance
-                    <ul>
-                        <li v-for="team in match.blue.teams" :key="team.number">{{team.number}}</li>
-                    </ul>
-                </div>
+                <div class="md-title">Match {{match.name}}: Red {{match.red.score.total}}-{{match.blue.score.total}}</div>
             </md-card-header-text>
-            <md-card-expand-trigger>
-                <md-button class="md-icon-button">
-                    <md-icon>keyboard_arrow_down</md-icon>
-                </md-button>
-            </md-card-expand-trigger>
+            <md-button class="md-icon-button" v-on:click="showdetails = !showdetails">
+                <md-icon>keyboard_arrow_down</md-icon>
+            </md-button>
         </md-card-header>
 
-        <md-card-expand>
-            <md-card-expand-content>
-                <md-card-content>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-                </md-card-content>
-            </md-card-expand-content>
-            <!-- <md-card-actions md-alignment="right">
-            </md-card-actions> -->
-
-        </md-card-expand>
+        <md-card-content>
+            <table>
+                <thead>
+                    <tr>
+                        <th/>
+                        <th>Red Aliance</th>
+                        <th>Blue Aliance</th>
+                    </tr>
+                </thead>
+                <tbody id="teams">
+                    <tr>
+                        <th>Teams</th>
+                        <td>
+                            <span v-if="match.red.teams[0]">
+                                <router-link :to="'/team/' + match.red.teams[0].number + '/home'">{{match.red.teams[0].number}}</router-link>
+                            </span>
+                            <span v-if="match.red.teams[1]">
+                                , <router-link :to="'/team/' + match.red.teams[1].number + '/home'">{{match.red.teams[1].number}}</router-link>
+                            </span>
+                            <span v-if="match.red.teams[2]">
+                                , <router-link :to="'/team/' + match.red.teams[2].number + '/home'">{{match.red.teams[2].number}}</router-link>
+                            </span>
+                        </td>
+                        <td>
+                            <span v-if="match.blue.teams[0]">
+                                <router-link :to="'/team/' + match.blue.teams[0].number + '/home'">{{match.blue.teams[0].number}}</router-link>
+                            </span>
+                            <span v-if="match.blue.teams[1]">
+                                , <router-link :to="'/team/' + match.blue.teams[1].number + '/home'">{{match.blue.teams[1].number}}</router-link>
+                            </span>
+                            <span v-if="match.blue.teams[2]">
+                                , <router-link :to="'/team/' + match.blue.teams[2].number + '/home'">{{match.blue.teams[2].number}}</router-link>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody id="details" v-if="showdetails">
+                    <tr>
+                        <th>Auto</th>
+                        <td>{{match.red.score.autonomous}}</td>
+                        <td>{{match.blue.score.autonomous}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tele-Op</th>
+                        <td>{{match.red.score.teleop}}</td>
+                        <td>{{match.blue.score.teleop}}</td>
+                    </tr>
+                    <tr>
+                        <th>End Game</th>
+                        <td>{{match.red.score.endgame}}</td>
+                        <td>{{match.blue.score.endgame}}</td>
+                    </tr>
+                    <tr>
+                        <th>Penalties</th>
+                        <td>{{match.red.score.penalties}}</td>
+                        <td>{{match.blue.score.penalties}}</td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{match.red.score.total}}</td>
+                        <td>{{match.blue.score.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-card-content>
     </md-card>
 </template>
 
@@ -47,49 +86,7 @@ export default {
     props: ["match"],
     components: {TeamName},
     data: () => ({
-        // match: {
-        //     name: "Q-1",
-        //     red: {
-        //         teams: [{
-        //                 number: 6596,
-        //                 surrogate: false
-        //             },{
-        //                 number: 12835,
-        //                 surrogate: false
-        //             }
-        //         ],
-        //         score: {
-        //             autonomous: 125,
-        //             autobonus: 0,
-        //             teleop: 86,
-        //             endgame: 20,
-        //             penalties: 0,
-        //             total: 231
-        //         }
-        //     },
-        //     blue: {
-        //         teams: [{
-        //                 number: 8813,
-        //                 surrogate: false
-        //             },{
-        //                 number: 9968,
-        //                 surrogate: false
-        //             }
-        //         ],
-        //         score: {
-        //             autonomous: 140,
-        //             autobonus: 0,
-        //             teleop: 56,
-        //             endgame: 55,
-        //             penalties: 0,
-        //             total: 251
-        //         }
-        //     },
-        //     starttime: {
-        //         seconds: 1528569639,
-        //         milliseconds: 0
-        //     }
-        // }
+        showdetails: false
     })
 }
 </script>
@@ -109,9 +106,23 @@ export default {
     vertical-align: top;
 }
 
-.columns {
-    width: 50%;
-    float: left;
+.md-card-header {
+    padding: 8px;
+}
+
+.md-card-content {
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    padding-top: 0px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    td {
+        width: 50%;
+    }
 }
 
 </style>
