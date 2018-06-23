@@ -1,6 +1,6 @@
 <template>
     <div>
-        <award-card v-for="award in awards" :award="award" showevent="true">
+        <award-card v-for="award in awards" :award="award" :key="award.id" showevent="true">
             
         </award-card>
     </div>

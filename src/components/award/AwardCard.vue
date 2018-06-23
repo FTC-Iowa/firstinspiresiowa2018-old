@@ -82,7 +82,7 @@ export default {
     watch: {
         award: {
             immediate: true,
-            handler (newVal, oldVal) {
+            handler (newVal) {
                 if(newVal.picture) {
                     storage.ref(newVal.picture).getDownloadURL().then((url) => this.imgurl = url);
                 }
