@@ -2,7 +2,7 @@
 
   <div class="page-container md-layout-row">
     <md-app>
-      <md-app-toolbar class="md-primary" v-on:SearchExpanded="doSearchExpanded">
+      <md-app-toolbar id="toolbar" class="md-primary" v-on:SearchExpanded="doSearchExpanded">
         <div class="color-strip md-elevation-5">
           <table cellspacing=0px cellpadding=0px >
             <tr>
@@ -30,6 +30,9 @@
 
       <md-app-drawer :md-active.sync="showNavigation">
         <md-toolbar class="md-transparent" md-elevation="0">
+            <md-button class="md-icon-button" @click="showNavigation=false">
+              <md-icon>keyboard_arrow_left</md-icon>
+            </md-button>
           <span class="md-title">Navigation</span>
         </md-toolbar>
 
@@ -151,7 +154,10 @@ export default {
   padding-left: 0;
   padding-right: 0;
   padding-top: 10px;
+  //position: sticky;
+  // top: 0;
 }
+
 .md-drawer {
   width: 230px;
   max-width: calc(100vw - 125px);
