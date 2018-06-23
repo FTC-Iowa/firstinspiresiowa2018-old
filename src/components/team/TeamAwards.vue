@@ -1,10 +1,19 @@
 <template>
-    <p> List of Team's Awards here.</p>
+    <div>
+        <award-card>
+            
+        </award-card>
+    </div>
 </template>
 
 <script>
+import AwardCard from '../award/AwardCard.vue'
+
 export default {
-    name: 'TeamAwards'
+    name: 'TeamAwards',
+    components: {
+        AwardCard
+    }
 }
 </script>
 
