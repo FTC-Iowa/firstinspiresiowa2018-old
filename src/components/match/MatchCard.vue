@@ -5,7 +5,7 @@
             <md-card-header-text>
                 <div class="md-title">Match {{match.name}}: Red {{match.red.score.total}}-{{match.blue.score.total}}</div>
             </md-card-header-text>
-            <md-button class="md-icon-button" v-on:click="showdetails = !showdetails">
+            <md-button class="md-icon-button" :class="isrotated" v-on:click="showdetails = !showdetails">
                 <md-icon>keyboard_arrow_down</md-icon>
             </md-button>
         </md-card-header>
@@ -87,7 +87,14 @@ export default {
     components: {TeamName},
     data: () => ({
         showdetails: false
-    })
+    }),
+    computed :{
+        isrotated() {
+            return {
+                'rotate': this.showdetails,
+            }
+        }
+    },
 }
 </script>
 
@@ -104,6 +111,10 @@ export default {
 .md-card {
     margin: 8px;
     vertical-align: top;
+}
+
+.rotate {
+    transform: rotate(180deg);
 }
 
 .md-card-header {
