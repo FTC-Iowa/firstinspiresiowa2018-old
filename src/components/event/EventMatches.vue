@@ -1,9 +1,9 @@
 <template>
     <div>
+        <match-card v-for="match in matches" :match="match" :key="match.name"/>
+        <!-- <match-card />
         <match-card />
-        <match-card />
-        <match-card />
-        <match-card />
+        <match-card /> -->
 
         <!-- <article v-for="(location, idx) in locations" :key="idx">
             <img :src="location.images">
@@ -21,12 +21,12 @@ export default {
     components: {MatchCard},
     data () {
         return {
-        locations: []
+        matches: []
         }
     },
     firestore () {
         return {
-        locations: db.collection('locations').orderBy('createdAt')
+        matches: db.collection('matches')
         }
     }
 }
