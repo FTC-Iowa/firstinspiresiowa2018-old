@@ -1,29 +1,5 @@
 <template>
     <md-card>
-        <!-- <md-card-media>
-            <img width="100px" src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350" alt="CatPic1">
-            <br>
-            <img width="100px" src="https://images.pexels.com/photos/259803/pexels-photo-259803.jpeg?auto=compress&cs=tinysrgb&h=350" alt="CatPic2">
-        </md-card-media> -->
-        <!-- <md-card-media-cover md-solid>
-            <md-card-media md-ratio="16:9">
-                <img src="https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350" alt="CatPic1">
-                <img src="https://images.pexels.com/photos/259803/pexels-photo-259803.jpeg?auto=compress&cs=tinysrgb&h=350" alt="CatPic2"> -->
-            <!-- </md-card-media>
-
-            <md-card-area>
-                <md-card-header>
-                    
-                    <md-card-header-text>
-                        <div class="md-title">
-                            Team Description
-                        </div>
-                    </md-card-header-text>
-
-                </md-card-header>
-                
-            </md-card-area>
-        </md-card-media-cover> -->
         <md-card-header>
             <md-card-header-text>
                 <div class="md-title">
