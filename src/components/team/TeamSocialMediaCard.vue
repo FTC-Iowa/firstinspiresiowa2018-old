@@ -2,14 +2,16 @@
     <md-card>
         <md-card-header>
             <div class="md-title">
-                Social Media
+                Team Social Media
             </div>
         </md-card-header>
 
         <md-card-content>
-            Webiste: Website link
-            <p> Facebook: Facebook link </p>
-            <p> Twitter: Twitter link </p>
+            Website: Website link
+            <br>
+            Facebook: Facebook link
+            <br>
+            Twitter: Twitter link
         </md-card-content>
 
     </md-card>
