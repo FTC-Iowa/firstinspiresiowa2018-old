@@ -119,6 +119,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-container {
+  background-image: linear-gradient(to right, rgb(0, 57,116), rgb(108, 194, 201), rgb(0, 57, 116));
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -139,6 +143,8 @@ export default {
 
 .md-app {
   min-height: 100vh;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .md-app-toolbar {
