@@ -17,7 +17,7 @@
         <md-button class="md-icon-button" @click="showNavigation=true">
           <md-icon>menu</md-icon>
         </md-button>
-        <span class="md-title" v-show="hideOnExpand === false || searchExpanded === false" ref="title">FIRST Inspires Iowa</span>
+        <router-link class="md-title" v-show="hideOnExpand === false || searchExpanded === false" ref="title" to="/">FIRST Inspires Iowa</router-link>
 
         <div class="md-toolbar-section-end">
           <!-- <md-button class="md-icon-button">
