@@ -1,6 +1,6 @@
 <template>
     <div>
-        <award-card>
+        <award-card v-for="award in awards" :award="award" showevent="true">
             
         </award-card>
     </div>
@@ -8,11 +8,21 @@
 
 <script>
 import AwardCard from '../award/AwardCard.vue'
-
+import {db} from '../../main'
 export default {
     name: 'TeamAwards',
     components: {
         AwardCard
+    },
+    data() {
+        return{
+            awards: []
+        }
+    },
+    firestore() {
+        return{
+            awards: db.collection("awards")
+        }
     }
 }
 </script>
