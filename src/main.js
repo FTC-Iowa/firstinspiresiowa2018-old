@@ -21,6 +21,7 @@ Vue.use(VueMaterial);
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/storage'
 Vue.use(VueFire);
 firebase.initializeApp ({
     apiKey: "AIzaSyDQOhAqHtOOjWetSbzfvdlpXB_RMtfb_NU",
@@ -34,6 +35,8 @@ firebase.initializeApp ({
 const firestore = firebase.firestore();
 firestore.settings({timestampsInSnapshots: true});
 export const db = firestore;
+const firestorage = firebase.storage();
+export const storage = firestorage;
 
 // Dynamic routes
 import router from  './routes.js'
