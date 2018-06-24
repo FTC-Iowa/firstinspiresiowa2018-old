@@ -1,0 +1,15 @@
+{
+    "name": "FIRST Inspires Iowa Scores",
+    "short_name": "FirstInspiresIowa",
+    "background_color": "#003974",
+    "theme_color": "#003974",
+    "display": "standalone",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/icon.jpg",
+            "sizes": "516x309",
+            "type": "image/jpg"
+        }
+    ]
+}

@@ -46,9 +46,6 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-//Vue.component('my-component', Home);
-
-
 new Vue({
   router,
   render: h => h(App)
