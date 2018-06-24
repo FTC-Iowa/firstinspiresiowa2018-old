@@ -6,13 +6,24 @@
             <md-tab id="tab-events" md-label="Events" to="./events"></md-tab>
             <md-tab id="tab-rankings" md-label="Rankings" to="rankings"></md-tab>
         </md-tabs>
-        <router-view></router-view>
+        <router-view :leagueData="leagueData"></router-view>
     </div>
 </template>
 
 <script>
+import { db } from '../../main'
+
 export default {
-    name: "LeaguePage"
+    name: "LeaguePage",
+    props: ['leagueId'],
+    data: () => ({
+        leagueData: {}
+    }),
+    firestore() {
+        return {
+            leagueData: db.collection('leagues').doc(this.leagueId)
+        }
+    }
 }
 </script>
 

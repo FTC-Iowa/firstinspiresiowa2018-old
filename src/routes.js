@@ -54,7 +54,7 @@ const routes = [
     },
 
 
-    { path: '/league/:id', component: LeaguePage,
+    { path: '/league/:leagueId', redirect: '/league/:leagueId/home', component: LeaguePage, props: true,
         children: [
             { path: 'home', component: LeagueHome },
             { path: 'teams', component: LeagueTeams },
@@ -73,5 +73,13 @@ const routes = [
 
 export default new VueRouter({
     mode: 'history',
+    scrollBehavior: function(to, from, savePosition) {
+        if (to.hash) {
+            // console.log("to", to);
+            return {selector: to.hash}
+        } else {
+            return {x: 0, y: 0}
+        }
+    },
     routes // short for `routes: routes`
 });

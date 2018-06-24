@@ -26,13 +26,15 @@
 </template>
 
 <script>
+import {db} from '../../main'
+
   const toLower = text => {
     return text.toString().toLowerCase()
   }
 
   const searchByName = (items, term) => {
     if (term) {
-      return items.filter(item => toLower(item.name).includes(toLower(term)))
+      return items.filter(item => toLower(item.name).includes(toLower(term)) || toLower(item.location).includes(toLower(term)))
     }
 
     return items
@@ -45,48 +47,27 @@ export default {
       search: null,
       searched: [],
       selected: {},
-      users: [
-        {
-          id: 1,
-          name: "VanSant",
-          location: "Villiska, IA"
-        },
-        {
-          id: 2,
-          name: "Sangster",
-          location: "Manning, IA"
-        },
-        {
-          id: 4,
-          name: "Stearns",
-          location: "Johnston, IA"
-        },
-        {
-          id: 5,
-          name: "Sant",
-          location: "Marshalltown, IA"
-        },
-        {
-          id: 6,
-          name: "Reininga",
-          location: "Mason City, IA"
-        },
-      ]
+      leagues: []
     }),
+    firestore() {
+      return {
+        leagues: db.collection('leagues').orderBy('name',"asc")
+      }
+    },
     methods: {
       newUser () {
         window.alert('Noop')
       },
       searchOnTable () {
-        this.searched = searchByName(this.users, this.search)
+        this.searched = searchByName(this.leagues, this.search)
       },
-        onSelect (item) {
-            this.selected = item
-            this.$router.push('/league/'+item.name+"/home");
-        }
+      onSelect (item) {
+          this.selected = item
+          this.$router.push('/league/'+item.id+"/home");
+      }
     },
     created () {
-      this.searched = this.users
+      this.searched = this.leagues
     }
 }
 </script>
