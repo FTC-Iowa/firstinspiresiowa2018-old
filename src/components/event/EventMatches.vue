@@ -1,6 +1,6 @@
 <template>
     <div>
-        <match-card v-for="match in matches" :match="match" :key="match.name"/>
+        <match-card v-for="match in this.eventData.matches" :matchId="match" :key="match.name"/>
     </div>
 </template>
 
@@ -10,6 +10,7 @@ import MatchCard from '../match/MatchCard.vue'
 
 export default {
     name: 'EventMatches',
+    props: ["eventData"],
     components: {MatchCard},
     data () {
         return {
@@ -18,7 +19,7 @@ export default {
     },
     firestore () {
         return {
-        matches: db.collection('matches')
+        matches: db.collection('matches').orderBy("index", "desc")
         }
     }
 }
