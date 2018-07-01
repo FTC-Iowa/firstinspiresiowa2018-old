@@ -38,6 +38,8 @@ export const db = firestore;
 const firestorage = firebase.storage();
 export const storage = firestorage;
 
+import firebaseui from 'firebaseui'
+
 // Dynamic routes
 import router from  './routes.js'
 
@@ -48,5 +50,14 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        console.log("login success")
+      } else {
+        console.log("need to login")
+      }
+    })
+  }
 }).$mount('#app')

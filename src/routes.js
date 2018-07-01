@@ -10,6 +10,11 @@ import TeamList from './components/team/TeamList.vue'
 import EventList from './components/event/EventList.vue'
 import LeagueList from './components/league/LeagueList.vue'
 import BlogPage from './components/blog/BlogPage.vue'
+import LoginPage from './components/login/LoginPage.vue'
+import SignUpPage from './components/login/SignUpPage.vue'
+import EventDashboardPage from './components/dashboard/EventDashboardPage.vue'
+
+import RouteError from './RouteError.vue'
 
 import EventPage from './components/event/EventPage.vue'
 import EventHome from './components/event/EventHome.vue'
@@ -34,7 +39,9 @@ const routes = [
     { path: '/events', component: EventList },
     { path: '/leagues', component: LeagueList },
     { path: '/blogs', component: BlogPage },
-
+    { path: '/login', component: LoginPage },
+    { path: '/signup', component: SignUpPage },
+    { path: '/eventdashboard', component: EventDashboardPage },
 
     { path: '/event/', redirect: '/events'},
     { path: '/event/:eventId', redirect: '/event/:eventId/home', component: EventPage, props: true,
@@ -68,7 +75,8 @@ const routes = [
             { path: 'matches', component: TeamMatches },
             { path: 'awards', component: TeamAwards }
         ]
-    }
+    },
+    { path: '*', component: RouteError }
   ];
 
 export default new VueRouter({
