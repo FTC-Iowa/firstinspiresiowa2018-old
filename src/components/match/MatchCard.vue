@@ -170,7 +170,7 @@ export default {
                     text: this.match.name + this.winnerString,
                     url: "https://firstinspiresiowa2018.firebaseapp.com" + this.$route.path + "#" + this.matchId
                 }).then (() => this.error = "Successful share")
-                .catch((error) => this.error = "error sharing", error);
+                .catch((error) => this.error = "error sharing: " + error);
             } else {
                 this.error = "Sharring not available";
             }
