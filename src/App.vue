@@ -1,7 +1,7 @@
 <template>
 
   <div class="page-container md-layout-row">
-    <md-app>
+    <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar id="toolbar" class="md-primary" v-on:SearchExpanded="doSearchExpanded">
         <div class="color-strip md-elevation-5">
           <table cellspacing=0px cellpadding=0px >
@@ -66,7 +66,7 @@
       </md-app-drawer>
 
       <md-app-content id="content-pane">
-        <router-view id="main-view"></router-view>
+        <router-view id="main-view" class="md-scrollbar" tag="md-app-content"></router-view>
       </md-app-content>
     </md-app>
   </div>
@@ -146,6 +146,7 @@ export default {
 
 .md-app {
   min-height: 100vh;
+  max-height: 100vh;
   max-width: 1000px;
   margin: auto;
 }
