@@ -29,40 +29,7 @@
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="showNavigation">
-        <md-toolbar class="md-transparent" md-elevation="0">
-            <md-button class="md-icon-button" @click="showNavigation=false">
-              <md-icon>keyboard_arrow_left</md-icon>
-            </md-button>
-          <span class="md-title">Navigation</span>
-        </md-toolbar>
-
-        <md-list>
-          <router-link tag="md-list-item" to="/" @click.native="hideSideBar">
-            <md-icon>home</md-icon>
-            <span class="md-list-item-text">Home</span>
-          </router-link>
-
-          <router-link tag="md-list-item" to="/teams" @click.native="hideSideBar">
-            <md-icon>people</md-icon>
-            <span class="md-list-item-text">Teams</span>
-          </router-link>
-
-          <router-link tag="md-list-item" to="/events" @click.native="hideSideBar">
-            <md-icon>event</md-icon>
-            <span class="md-list-item-text">Events</span>
-          </router-link>
-
-          <router-link tag="md-list-item" to="/leagues" @click.native="hideSideBar">
-            <md-icon>rowing</md-icon>
-            <span class="md-list-item-text">Leagues</span>
-          </router-link>
-
-          <router-link tag="md-list-item" to="/blogs" @click.native="hideSideBar">
-            <md-icon>description</md-icon>
-            <span class="md-list-item-text">Blogs</span>
-          </router-link>
-
-        </md-list>
+        <navigation-pane v-on:close-sidebar="showNavigation = false"/>
       </md-app-drawer>
 
       <md-app-content id="content-pane">
@@ -77,10 +44,12 @@
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
 import SearchButton from './components/search/SearchButton.vue'
+import NavigationPane from './components/layout/NavigationPane.vue'
 export default {
   name: 'app',
   components: {
-    SearchButton
+    SearchButton,
+    NavigationPane
   },
   data: () => ({
     showNavigation: false,
