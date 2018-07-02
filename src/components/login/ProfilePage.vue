@@ -25,16 +25,9 @@ export default {
         user() {
             return this.$store.state.user;
         },
-        // profile() {
-        //     if(this.$store.state.user && this.$store.state.user.uid) {
-                
-        //     } else {
-        //         return null;
-        //     }
-        // }
     },
     watch: {
-        user (newUser, oldUser) {
+        user (newUser) {
             console.log("new User Detected")
             if(newUser && newUser.uid) {
                 var docRef = this.$db.collection("profiles").doc(newUser.uid);
@@ -52,7 +45,7 @@ export default {
                 })
                 
             } else {
-                this.profile = null;
+                this.$router.replace('/login');
             }
         }
     }

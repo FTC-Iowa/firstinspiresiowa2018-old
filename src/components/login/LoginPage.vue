@@ -7,8 +7,7 @@
 
 <script>
 import firebase from 'firebase'
-import firebaseui from 'firebaseui'
-import {auth, authui} from '../../main'
+import {authui} from '../../main'
 
 export default {
     name: "LoginPage",
@@ -18,12 +17,29 @@ export default {
     }),
     methods: {
     },
+    watch: {
+        user (newUser) {
+            if(newUser) {
+                this.$router.replace("/profile")
+            }
+        }
+    },
+    computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     mounted () {
         var uiConfig = {
-            signInSuccessUrl: '/profile',
+            //signInSuccessUrl: '/profile',
             callbacks: {
-                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-                    return true;
+                signInSuccessWithAuthResult: function(authResult) {
+                    //console.log(redirectUrl);
+                    return false;
+                },
+                signInFailure: function (error) {
+                    console.log("something went wrong when loging in", error);
+                    return null;
                 },
                 uiShown: function() {
                     document.getElementById('loader').style.display = 'none';
@@ -38,7 +54,6 @@ export default {
         // authui.signIn();
         authui.reset();
         authui.start('#firebaseui-auth-container', uiConfig)
-        
     }
 }
 </script>

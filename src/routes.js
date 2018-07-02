@@ -88,7 +88,7 @@ const routes = [
 
 let router = new VueRouter({
     mode: 'history',
-    scrollBehavior: function(to, from, savePosition) {
+    scrollBehavior: function(to) {
         if (to.hash) {
             // console.log("to", to);
             return {selector: to.hash}
@@ -99,7 +99,7 @@ let router = new VueRouter({
     routes // short for `routes: routes`
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
     let currentUser = firebase.auth().currentUser;
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
