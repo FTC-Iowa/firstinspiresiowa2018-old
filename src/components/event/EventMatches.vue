@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { db } from '../../main'
+// import { db } from '../../main'
 import MatchCard from '../match/MatchCard.vue'
 
 export default {
@@ -19,7 +19,7 @@ export default {
     },
     firestore () {
         return {
-        matches: db.collection('matches').orderBy("index", "desc")
+        matches: this.$db.collection('matches').orderBy("index", "desc")
         }
     }
 }

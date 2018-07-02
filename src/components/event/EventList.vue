@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import {db} from '../../main'
 import DateFormat from '../utils/DateFormat.vue'
 
   const toLower = text => {
@@ -56,7 +55,7 @@ export default {
     }),
     firestore() {
       return {
-        events: db.collection('events').orderBy('date', "desc")
+        events: this.$db.collection('events').orderBy('date', "desc")
       }
     },
     methods: {

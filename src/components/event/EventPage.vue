@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { db } from '../../main'
+// import { db } from '../../main'
 
 export default {
     name: "EventPage",
@@ -47,7 +47,7 @@ export default {
     }),
     firestore () {
         return {
-            eventData: db.collection('events').doc(this.eventId)
+            eventData: this.$db.collection('events').doc(this.eventId)
         }
     },
     computed :{

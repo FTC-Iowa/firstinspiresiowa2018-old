@@ -8,7 +8,7 @@
 
 <script>
 import AwardCard from '../award/AwardCard.vue'
-import {db} from '../../main'
+// import {db} from '../../main'
 export default {
     name: 'TeamAwards',
     components: {
@@ -21,7 +21,7 @@ export default {
     },
     firestore() {
         return{
-            awards: db.collection("awards")
+            awards: this.$db.collection("awards")
         }
     }
 }

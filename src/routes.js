@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import firebase from 'firebase'
 
 Vue.use(VueRouter)
 
@@ -11,7 +12,8 @@ import EventList from './components/event/EventList.vue'
 import LeagueList from './components/league/LeagueList.vue'
 import BlogPage from './components/blog/BlogPage.vue'
 import LoginPage from './components/login/LoginPage.vue'
-import SignUpPage from './components/login/SignUpPage.vue'
+// import SignUpPage from './components/login/SignUpPage.vue'
+import ProfilePage from './components/login/ProfilePage.vue'
 import EventDashboardPage from './components/dashboard/EventDashboardPage.vue'
 
 import RouteError from './RouteError.vue'
@@ -33,15 +35,20 @@ import TeamMatches from './components/team/TeamMatches.vue'
 import TeamAwards from './components/team/TeamAwards.vue'
 
 const routes = [
-    { path: '/', component: HomePage },
+    { path: '/', name: 'home', component: HomePage },
     { path: '/search', component: SearchPage },
     { path: '/teams', component: TeamList },
     { path: '/events', component: EventList },
     { path: '/leagues', component: LeagueList },
     { path: '/blogs', component: BlogPage },
-    { path: '/login', component: LoginPage },
-    { path: '/signup', component: SignUpPage },
-    { path: '/eventdashboard', component: EventDashboardPage },
+    { path: '/login', name: 'login', component: LoginPage },
+    { path: '/profile', name: 'profile', component: ProfilePage },
+    // { path: '/signup', component: SignUpPage },
+    { path: '/eventdashboard', component: EventDashboardPage,
+        meta: {
+            requiresAuth: true
+        }
+    },
 
     { path: '/event/', redirect: '/events'},
     { path: '/event/:eventId', redirect: '/event/:eventId/home', component: EventPage, props: true,
@@ -79,7 +86,7 @@ const routes = [
     { path: '*', component: RouteError }
   ];
 
-export default new VueRouter({
+let router = new VueRouter({
     mode: 'history',
     scrollBehavior: function(to, from, savePosition) {
         if (to.hash) {
@@ -91,3 +98,14 @@ export default new VueRouter({
     },
     routes // short for `routes: routes`
 });
+
+router.beforeEach((to, from, next) => {
+    let currentUser = firebase.auth().currentUser;
+    let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+    if (requiresAuth && !currentUser) next('login');
+    // else if (requiresAuth && currentUser) next('home')
+    else next()
+})
+
+export default router;

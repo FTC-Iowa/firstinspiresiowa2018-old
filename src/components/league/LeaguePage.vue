@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { db } from '../../main'
+// import { db } from '../../main'
 
 export default {
     name: "LeaguePage",
@@ -21,7 +21,7 @@ export default {
     }),
     firestore() {
         return {
-            leagueData: db.collection('leagues').doc(this.leagueId)
+            leagueData: this.$db.collection('leagues').doc(this.leagueId)
         }
     }
 }

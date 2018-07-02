@@ -35,11 +35,29 @@ firebase.initializeApp ({
 )
 const firestore = firebase.firestore();
 firestore.settings({timestampsInSnapshots: true});
-export const db = firestore;
+// export const db = firestore;
 const firestorage = firebase.storage();
-export const storage = firestorage;
+// export const storage = firestorage;
+const fireauth = firebase.auth();
+export const auth = fireauth;
 
 import firebaseui from 'firebaseui'
+const fireauthui = new firebaseui.auth.AuthUI(auth);
+export const authui = fireauthui;
+Vue.prototype.$db = firestore;
+Vue.prototype.$storage = firestorage;
+
+
+auth.onAuthStateChanged((user) => {
+  if(user) {
+    //user is signed in
+    console.log("User is signed in", JSON.stringify(user));
+    store.commit('login',user);
+  } else {
+    console.log("User is logged out");
+    store.commit('logout');
+  }
+})
 
 // Dynamic routes
 import router from  './routes.js'

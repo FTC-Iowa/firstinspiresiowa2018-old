@@ -68,7 +68,7 @@
 
 <script>
 import TeamName from '../utils/TeamName.vue'
-import {storage} from '../../main'
+// import {storage} from '../../main'
 
 export default {
     name: "AwardCard",
@@ -84,7 +84,7 @@ export default {
             immediate: true,
             handler (newVal) {
                 if(newVal.picture) {
-                    storage.ref(newVal.picture).getDownloadURL().then((url) => this.imgurl = url);
+                    this.$storage.ref(newVal.picture).getDownloadURL().then((url) => this.imgurl = url);
                 }
             }   
         }

@@ -109,7 +109,7 @@
 
 <script>
 import TeamName from '../utils/TeamName.vue'
-import {db} from '../../main'
+// import {db} from '../../main'
 
 
 export default {
@@ -124,7 +124,7 @@ export default {
     }),
     firestore () {
         return {
-            match: db.collection('matches').doc(this.matchId)
+            match: this.$db.collection('matches').doc(this.matchId)
         }
     },
     computed :{

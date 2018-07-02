@@ -6,7 +6,7 @@
 
 <script>
 import AwardCard from '../award/AwardCard.vue'
-import {db} from '../../main'
+// import {db} from '../../main'
 
 export default {
     name: "EventAwards",
@@ -17,7 +17,7 @@ export default {
         awards: []
     }),
     firestore: () => ({
-        awards: db.collection("awards")
+        awards: this.$db.collection("awards")
     })
 }
 </script>

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {db} from '../../main'
+// import {db} from '../../main'
 
   const toLower = text => {
     return text.toString().toLowerCase()
@@ -51,7 +51,7 @@ export default {
     }),
     firestore() {
       return {
-        leagues: db.collection('leagues').orderBy('name',"asc")
+        leagues: this.$db.collection('leagues').orderBy('name',"asc")
       }
     },
     methods: {

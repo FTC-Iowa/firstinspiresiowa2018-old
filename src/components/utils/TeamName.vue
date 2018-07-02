@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {db} from '../../main'
+// import {db} from '../../main'
 export default {
     name: "TeamName",
     props: ["number"],
@@ -14,7 +14,7 @@ export default {
     }),
     firestore() {
         return {
-            team: db.collection("teams").doc("" + this.number)
+            team: this.$db.collection("teams").doc("" + this.number)
         }
     }
 }
