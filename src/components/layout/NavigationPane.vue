@@ -35,12 +35,17 @@
 
             <md-divider />
 
-            <router-link tag="md-list-item" to="/login" @click.native="hideSideBar">
+            <router-link v-if="!user" tag="md-list-item" to="/login" @click.native="hideSideBar">
                 <md-icon>person</md-icon>
                 <span class="md-list-item-text">Login</span>
             </router-link>
 
-            <router-link tag="md-list-item" to="/eventdashboard" @click.native="hideSideBar">
+            <router-link v-if="user" tag="md-list-item" to="/profile" @click.native="hideSideBar">
+                <md-icon>person</md-icon>
+                <span class="md-list-item-text">Profile</span>
+            </router-link>
+
+            <router-link v-if="user" tag="md-list-item" to="/eventdashboard" @click.native="hideSideBar">
                 <md-icon>dashboard</md-icon>
                 <span class="md-list-item-text">Event Dashboard</span>
             </router-link>
@@ -50,10 +55,23 @@
 
 <script>
 export default {
+    data: () => ({
+        // user: null
+    }),
+    computed: {
+        user() {
+            //console.log("firebase", firebase.auth().currentUser)
+            //return firebase.auth().currentUser 
+            return this.$store.state.user;
+        }
+    },
   methods: {
     hideSideBar() {
       this.$emit("close-sidebar");
     }
+    },
+    mounted() {
+
   }
 };
 </script>
