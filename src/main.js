@@ -43,6 +43,14 @@ import firebaseui from 'firebaseui'
 // Dynamic routes
 import router from  './routes.js'
 
+// Google Analytics
+import VueAnalytics from 'vue-analytics'
+Vue.use(VueAnalytics, {
+  id: 'UA-111934327-2',
+  router
+  // @todo add additional features to better track what page is viewed
+})
+
 // Main app entry point
 import App from './App.vue'
 
