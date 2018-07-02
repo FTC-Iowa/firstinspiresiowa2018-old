@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+import store from './store.js'
 // Vue Material Library
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
@@ -58,6 +59,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  store,
   render: h => h(App),
   created() {
     firebase.auth().onAuthStateChanged((user) => {
