@@ -40,20 +40,28 @@
                 <span class="md-list-item-text">Login</span>
             </router-link>
 
-            <router-link v-if="user" tag="md-list-item" to="/profile" @click.native="hideSideBar">
+            <md-list-item v-if="user" @click="logout">
+                <md-avatar class="md-small">
+                    <img :src="user.photoURL" alt="Avatar">
+                </md-avatar>
+                <span class="md-list-item-text">Sign Out</span>
+            </md-list-item>
+
+            <!-- <router-link v-if="user" tag="md-list-item" :to="{name: 'profile'}" @click.native="hideSideBar">
                 <md-icon>person</md-icon>
                 <span class="md-list-item-text">Profile</span>
-            </router-link>
+            </router-link> -->
 
-            <router-link v-if="user" tag="md-list-item" to="/eventdashboard" @click.native="hideSideBar">
+            <router-link v-if="user" tag="md-list-item" to="/dashboard" @click.native="hideSideBar">
                 <md-icon>dashboard</md-icon>
-                <span class="md-list-item-text">Event Dashboard</span>
+                <span class="md-list-item-text">Dashboard</span>
             </router-link>
         </md-list>
     </div>
 </template>
 
 <script>
+import {auth} from '../../main'
 export default {
     data: () => ({
         // user: null
@@ -63,12 +71,17 @@ export default {
             //console.log("firebase", firebase.auth().currentUser)
             //return firebase.auth().currentUser 
             return this.$store.state.user;
-        }
+        },
+
     },
-  methods: {
-    hideSideBar() {
-      this.$emit("close-sidebar");
-    }
+    methods: {
+        hideSideBar() {
+            this.$emit("close-sidebar");
+        },
+        logout() {
+            auth.signOut();
+            this.hideSideBar();
+        }
     },
     mounted() {
 
@@ -77,4 +90,7 @@ export default {
 </script>
 
 <style>
+.md-list-item-content .md-avatar:first-child {
+    margin-right: 32px;
+}
 </style>

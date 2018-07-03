@@ -1,7 +1,11 @@
 <template>
     <div>
         <div id="firebaseui-auth-container"></div>
-        <div id="loader">Loading...</div>
+        <div id="loader">
+            <center>
+                <md-progress-spinner md-mode="indeterminate"/>
+            </center>
+        </div>
     </div>
 </template>
 
@@ -20,7 +24,7 @@ export default {
     watch: {
         user (newUser) {
             if(newUser) {
-                this.$router.replace("/profile")
+                this.$router.replace({name: 'profile'})
             }
         }
     },
