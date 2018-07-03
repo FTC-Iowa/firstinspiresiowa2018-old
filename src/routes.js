@@ -13,8 +13,13 @@ import LeagueList from './components/league/LeagueList.vue'
 import BlogPage from './components/blog/BlogPage.vue'
 import LoginPage from './components/login/LoginPage.vue'
 // import SignUpPage from './components/login/SignUpPage.vue'
-import ProfilePage from './components/login/ProfilePage.vue'
-import EventDashboardPage from './components/dashboard/EventDashboardPage.vue'
+
+import DashboardPage from './components/dashboard/DashboardPage.vue'
+import ProfileDashboard from './components/dashboard/ProfileDashboard.vue'
+import AdminDashboard from './components/dashboard/AdminDashboard.vue'
+import LeaguesDashboard from './components/dashboard/LeaguesDashboard.vue'
+import TeamsDashboard from './components/dashboard/TeamsDashboard.vue'
+import EventsDashboard from './components/dashboard/EventsDashboard.vue'
 
 import RouteError from './RouteError.vue'
 
@@ -42,12 +47,20 @@ const routes = [
     { path: '/leagues', component: LeagueList },
     { path: '/blogs', component: BlogPage },
     { path: '/login', name: 'login', component: LoginPage },
-    { path: '/profile', name: 'profile', component: ProfilePage },
+    //{ path: '/profile', component: ProfilePage },
     // { path: '/signup', component: SignUpPage },
-    { path: '/eventdashboard', component: EventDashboardPage,
+
+    { path: '/dashboard', component: DashboardPage,
         meta: {
             requiresAuth: true
-        }
+        },
+        children: [
+            { path: 'profile', name: 'profile', component: ProfileDashboard },
+            { path: 'admin', name: 'admin-dashboard', component: AdminDashboard },
+            { path: 'league', name: 'leagues-dashboard', component: LeaguesDashboard },
+            { path: 'team', name: 'teams-dashboard', component: TeamsDashboard },
+            { path: 'event', name: 'events-dashboard', component: EventsDashboard }
+        ]
     },
 
     { path: '/event/', redirect: '/events'},
@@ -103,9 +116,10 @@ router.beforeEach((to, _from, next) => {
     let currentUser = firebase.auth().currentUser;
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-    if (requiresAuth && !currentUser) next('login');
-    // else if (requiresAuth && currentUser) next('home')
-    else next()
+    // if (requiresAuth && !currentUser) next('login');
+    // // else if (requiresAuth && currentUser) next('home')
+    // else next()
+    next()
 })
 
 export default router;
