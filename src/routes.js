@@ -27,6 +27,7 @@ import EventPage from './components/event/EventPage.vue'
 import EventHome from './components/event/EventHome.vue'
 import EventMatches from './components/event/EventMatches.vue'
 import EventAwards from './components/event/EventAwards.vue'
+import EventTwitter from './components/event/EventTwitter.vue'
 
 import LeaguePage from './components/league/LeaguePage.vue'
 import LeagueHome from './components/league/LeagueHome.vue'
@@ -74,7 +75,7 @@ const routes = [
             { path: 'rankings', component: HomePage },
             { path: 'inspections', component: HomePage },
             { path: 'awards', component: EventAwards },
-            { path: 'twitter', component: HomePage },
+            { path: 'twitter', component: EventTwitter },
         ]
 
 

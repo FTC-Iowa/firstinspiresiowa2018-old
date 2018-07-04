@@ -12,7 +12,6 @@
                 <md-card-header-text>
                     {{league ? league.name : "Create New League" }}
                 </md-card-header-text>
-
             </md-card-header>
 
             <md-card-content>
@@ -43,7 +42,7 @@
                 <md-button v-if="editing" class="md-primary" @click="cancelEdit()">Cancel</md-button>
                 <md-button v-if="!editing" class="md-primary" @click="startEdit()" >Edit</md-button>
                 <md-button v-if="!editing" class="md-primary" @click="confirm = true">Delete</md-button>
-                <md-button v-if="editing" class="md-primary" @click="save()" :disabled="sending">Save</md-button>
+                <md-button v-if="editing" class="md-primary" @click="save()" :disabled="sending">{{create ? 'Create' : 'Save' }}</md-button>
             </md-card-actions>
         </form>
         <!-- {{JSON.stringify(league)}} -->
@@ -152,6 +151,13 @@ export default {
 </script>
 
 <style scoped>
+
+.md-card-header{
+    background-color: #ddd;
+    width: 100%;
+    font-weight: bold;
+}
+
 .league-card {
     width: 260px;
     margin: 6px;
@@ -159,4 +165,9 @@ export default {
     vertical-align: top;   
 }
 
+@media (max-width: 700px) {
+    .league-card {
+        width: 100%;
+    }
+}
 </style>

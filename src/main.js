@@ -51,7 +51,7 @@ Vue.prototype.$storage = firestorage;
 auth.onAuthStateChanged((user) => {
   if(user) {
     //user is signed in
-    console.log("User is signed in", JSON.stringify(user));
+    //console.log("User is signed in", JSON.stringify(user));
     store.commit('login',user);
   } else {
     console.log("User is logged out");
